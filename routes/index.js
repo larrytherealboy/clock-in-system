@@ -9,6 +9,7 @@ const { generalErrorHandler } = require('../middleware/error-handler')
 
 router.get('/signin', userController.signInPage)
 router.post('/signin', passport.authenticate('local', { failureRedirect: '/signin', failureFlash: true }), userController.signIn)
+router.get('/logout', userController.logout)
 
 router.get('/records', authenticated, recordController.getRecords)
 

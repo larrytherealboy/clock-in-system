@@ -6,20 +6,6 @@ module.exports = {
       req.flash('error_messages', `${err}`)
     }
     res.redirect('back')
-    next(err) // 把 Error 物件傳給下一個error handler
-  },
-  apiErrorHandler (err, req, res, next) {
-    if (err instanceof Error) {
-      res.status(err.status || 500).json({
-        status: 'error',
-        message: `${err.name}: ${err.message}`
-      })
-    } else {
-      res.status(500).json({
-        status: 'error',
-        message: `${err}`
-      })
-    }
     next(err)
   }
 }
