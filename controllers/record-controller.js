@@ -1,7 +1,7 @@
 
 const recordController = {
   getRecords: (req, res) => {
-    res.render('signin')
+    res.render('records')
   }
 }
 

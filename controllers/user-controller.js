@@ -5,8 +5,9 @@ const userController = {
     res.render('signin')
   },
   signIn: (req, res) => {
+    console.log('11111')
     req.flash('success_messages', '成功登入！')
-    res.redirect('/restaurants')
+    res.redirect('/records')
   },
 }
 
