@@ -11,6 +11,10 @@ router.get('/signin', userController.signInPage)
 router.post('/signin', passport.authenticate('local', { failureRedirect: '/signin', failureFlash: true }), userController.signIn)
 router.get('/logout', userController.logout)
 
+router.get('/users/:id/edit', authenticated, userController.editUser)
+router.put('/users/:id', authenticated, userController.putUser)
+router.get('/users/:id', authenticated, userController.getUser)
+
 router.get('/records', authenticated, recordController.getRecords)
 
 router.use('/', (req, res) => res.redirect('/records'))
