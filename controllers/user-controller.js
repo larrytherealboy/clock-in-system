@@ -23,7 +23,6 @@ const userController = {
     })
       .then(user => {
         if (!user) throw new Error("User didn't exist!")
-        console.log(user)
         res.render('users/profile', { user })
       })
       .catch(err => next(err))

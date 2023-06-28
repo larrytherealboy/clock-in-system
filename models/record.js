@@ -16,7 +16,7 @@ module.exports = (sequelize, DataTypes) => {
     clockout: DataTypes.DATE,
     duration: DataTypes.INTEGER,
     status: DataTypes.STRING,
-    attendance_record: DataTypes.STRING
+    isAttendance: DataTypes.BOOLEAN
   }, {
     sequelize,
     modelName: 'Record',

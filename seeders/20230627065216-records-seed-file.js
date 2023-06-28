@@ -17,8 +17,8 @@ module.exports = {
         clockoutTime.setHours(clockoutTime.getHours() + Math.floor(Math.random() * 16))
 
         let duration = (clockoutTime - clockinTime) / 1000 / 60 / 60
-        let attendance_record = ''
-        if (duration >= 8) { attendance_record = 'attendance' } else { attendance_record = 'absence' }
+        let is_attendance = ''
+        if (duration >= 8) { is_attendance = true } else { is_attendance = false }
 
         return {
           user_id: users[Math.floor(Math.random() * users.length)].id,
@@ -28,7 +28,7 @@ module.exports = {
           duration: duration,
           // status: arrayStatus[Math.floor(Math.random() * arrayStatus.length)],
           status: 'clockout',
-          attendance_record: attendance_record,
+          is_attendance: is_attendance,
           created_at: new Date(),
           updated_at: new Date(),
         }

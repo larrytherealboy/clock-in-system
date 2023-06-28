@@ -1,0 +1,47 @@
+{{>admin-tabs route="records"}}
+
+<br />
+<br />
+<table class="table align-middle">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">#user</th>
+      <th scope="col">日期</th>
+      <th scope="col">上班卡時間</th>
+      <th scope="col">下班卡時間</th>
+      <th scope="col">工作時數</th>
+      <th scope="col">打卡狀態</th>
+      <th scope="col">出缺勤紀錄</th>
+      <th scope="col">#</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each records}}
+    <tr>
+      <th scope="row">{{this.id}}</th>
+      <th scope="row">{{this.userId}}</th>
+      <td>{{this.date}}</td>
+      <td>{{formatDateTime this.clockin}}</td>
+      <td>{{formatDateTime this.clockout}}</td>
+      <td>{{this.duration}}</td>
+      <td>{{this.status}}</td>
+      <td>{{this.isAttendance}}</td>
+      <td>
+        {{#if this.isAttendance}}
+        </button>
+        <form action="/admin/records/{{this.id}}?_method=PATCH" method="POST" style="display: inline;">
+          <button type="submit" class="btn btn-link link-primary">set as absence</button>
+        </form>
+        {{else}}
+        </button>
+        <form action="/admin/records/{{this.id}}?_method=PATCH" method="POST" style="display: inline;">
+          <button type="submit" class="btn btn-link link-primary">set as attendance</button>
+        </form>
+        {{/if}}
+      </td>
+    </tr>
+    {{/each}}
+  </tbody>
+</table>
+

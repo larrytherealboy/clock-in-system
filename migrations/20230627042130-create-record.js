@@ -26,8 +26,8 @@ module.exports = {
       status: {
         type: Sequelize.STRING
       },
-      attendance_record: {
-        type: Sequelize.STRING
+      is_attendance: {
+        type: Sequelize.BOOLEAN
       },
       created_at: {
         allowNull: false,

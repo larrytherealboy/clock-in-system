@@ -6,6 +6,9 @@ const recordController = require('../controllers/record-controller')
 
 const { authenticated, authenticatedAdmin } = require('../middleware/auth') // 引入 auth.js
 const { generalErrorHandler } = require('../middleware/error-handler')
+const admin = require('./modules/admin')
+
+router.use('/admin', authenticatedAdmin, admin)
 
 router.get('/signin', userController.signInPage)
 router.post('/signin', passport.authenticate('local', { failureRedirect: '/signin', failureFlash: true }), userController.signIn)
