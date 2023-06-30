@@ -1,5 +1,7 @@
-const { User, Record } = require('../models')
+const { Record } = require('../models')
 const { formatDate, currentTaipeiTime } = require('../helpers/time-helper')
+const nowTime = currentTaipeiTime()
+const nowDate = formatDate(nowTime)
 
 const recordController = {
   getRecords: (req, res, next) => {
@@ -16,11 +18,6 @@ const recordController = {
       .catch(err => next(err))
   },
   clockin: (req, res, next) => {
-    const nowTime = currentTaipeiTime()
-    const nowDate = formatDate(nowTime)
-    console.log('taipeiTime', nowTime)
-    console.log('nowDate', nowDate)
-
     Record.findOne({
       where: {
         userId: req.params.id,
@@ -40,14 +37,14 @@ const recordController = {
         })
       })
       .then(() => {
-        req.flash('上班打卡成功')
+        req.flash('success_messages', '上班打卡成功！')
         res.redirect('/records')
       })
       .catch(err => next(err))
   },
   clockout: (req, res, next) => {
-    const nowTime = currentTaipeiTime()
-    const nowDate = formatDate(nowTime)
+    let duration = ''
+    let isAttendance = ''
 
     Record.findOne({
       where: {
@@ -57,15 +54,18 @@ const recordController = {
     })
       .then(record => {
         if (!record) throw new Error("今天還沒打過上班卡了!")
+        duration = Math.floor((nowTime - record.toJSON().clockin) / 1000 / 60 / 60)
+        if (duration >= 8) { isAttendance = true } else { isAttendance = false }
+
         return record.update({
           clockout: nowTime,
-          duration: 0,
+          duration,
           status: "clockout",
-          isAttendance: null
+          isAttendance
         })
       })
       .then(() => {
-        req.flash('下班打卡成功')
+        req.flash('success_messages', '下班打卡成功！')
         res.redirect('/records')
       })
       .catch(err => next(err))
