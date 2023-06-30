@@ -25,6 +25,9 @@ const adminController = {
   },
   getRecords: (req, res, next) => {
     return Record.findAll({
+      order: [
+        ['clockin', 'DESC']
+      ],
       raw: true
     })
     .then(records => {

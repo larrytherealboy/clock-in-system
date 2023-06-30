@@ -26,7 +26,11 @@
       <td>{{formatDateTime this.clockout}}</td>
       <td>{{this.duration}}</td>
       <td>{{this.status}}</td>
-      <td>{{this.isAttendance}}</td>
+      {{#if this.isAttendance}}
+      <td>attendance</td>
+      {{else}}
+      <td>absence</td>
+      {{/if}}
       <td>
         {{#if this.isAttendance}}
         </button>

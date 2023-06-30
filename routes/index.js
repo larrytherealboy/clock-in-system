@@ -19,6 +19,8 @@ router.put('/users/:id', authenticated, userController.putUser)
 router.get('/users/:id', authenticated, userController.getUser)
 
 router.get('/records', authenticated, recordController.getRecords)
+router.post('/records/clockin/:id', authenticated, recordController.clockin)
+router.post('/records/clockout/:id', authenticated, recordController.clockout)
 
 router.use('/', (req, res) => res.redirect('/records'))
 router.use('/', generalErrorHandler)

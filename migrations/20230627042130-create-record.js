@@ -15,19 +15,24 @@ module.exports = {
         type: Sequelize.DATEONLY
       },
       clockin: {
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
+        defaultValue: null
       },
       clockout: {
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
+        defaultValue: null
       },
       duration: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        defaultValue: null
       },
       status: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        defaultValue: null
       },
       is_attendance: {
-        type: Sequelize.BOOLEAN
+        type: Sequelize.BOOLEAN,
+        defaultValue: null
       },
       created_at: {
         allowNull: false,

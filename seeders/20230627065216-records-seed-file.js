@@ -7,12 +7,16 @@ module.exports = {
       { type: queryInterface.sequelize.QueryTypes.SELECT }
     )
 
-    // const arrayStatus = ['clockin', 'clockout']
-    // const arrayAttendance = ['attendance', 'absence']
-
     await queryInterface.bulkInsert('Records',
       Array.from({ length: 50 }, () => {
         let clockinTime = new Date()
+        clockinTime.setDate(clockinTime.getDate() - Math.floor(Math.random() * 16))
+
+        let date = new Date()
+        date.setFullYear(clockinTime.getFullYear())
+        date.setMonth(clockinTime.getMonth())
+        date.setDate(clockinTime.getDate())
+
         let clockoutTime = new Date(clockinTime)
         clockoutTime.setHours(clockoutTime.getHours() + Math.floor(Math.random() * 16))
 
@@ -22,7 +26,7 @@ module.exports = {
 
         return {
           user_id: users[Math.floor(Math.random() * users.length)].id,
-          date: new Date(),
+          date: date,
           clockin: clockinTime,
           clockout: clockoutTime,
           duration: duration,

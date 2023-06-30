@@ -1,4 +1,15 @@
-<a href="/todos/new" class="btn btn-primary mb-3">Create</a>
+<div class="d-flex p-2 bd-highlight justify-content-around mb-3">
+  </button>
+  <form action="/records/clockin/{{user.id}}" method="POST" style="display: inline;">
+    <button type="submit" class="btn btn-outline-success btn-lg">上班卡</button>
+  </form>
+  </button>
+  <form action="/records/clockout/{{user.id}}" method="POST" style="display: inline;">
+    <button type="submit" class="btn btn-outline-danger btn-lg">下班卡</button>
+  </form>
+</div>
+
+
 <br />
 <br />
 <table class="table align-middle">
