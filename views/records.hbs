@@ -1,21 +1,36 @@
 <div class="d-flex p-2 bd-highlight justify-content-around mb-3">
   </button>
   <form action="/records/clockin/{{user.id}}" method="POST" style="display: inline;">
-    <button type="submit" class="btn btn-outline-success btn-lg">上班卡</button>
+    <button type="submit" class="btn btn-outline-success btn-lg">上班打卡</button>
   </form>
   </button>
   <form action="/records/clockout/{{user.id}}" method="POST" style="display: inline;">
-    <button type="submit" class="btn btn-outline-danger btn-lg">下班卡</button>
+    <button type="submit" class="btn btn-outline-danger btn-lg">下班打卡</button>
   </form>
 </div>
+
+<div class="d-flex flex-column bd-highlight mb-3">
+  <div class="p-2 bd-highlight m-auto">
+    <h1>今日上班卡時間：{{formatTimeOnly record.clockin}}</h1>
+  </div>
+  <div class="p-2 bd-highlight m-auto">
+    {{#if record.clockout}}
+    <h1>今日下班卡時間：{{formatTimeOnly record.clockout}}</h1>
+    {{else}}
+    <h1>今日下班卡時間：還沒下班</h1>
+    {{/if}}
+  </div>
+</div>
+
 
 
 <br />
 <br />
 <table class="table align-middle">
+  <caption>打卡記錄</caption>
   <thead class="thead-dark">
     <tr>
-      <th scope="col">日期</th>
+      <th scope="col">打卡日期</th>
       <th scope="col">上班卡時間</th>
       <th scope="col">下班卡時間</th>
       <th scope="col">工作時數</th>
@@ -28,15 +43,27 @@
     <tr>
       <td>{{this.date}}</td>
       <td>{{formatDateTime this.clockin}}</td>
+      {{#if this.clockout}}
       <td>{{formatDateTime this.clockout}}</td>
+      {{else}}
+      <td>還沒下班</td>
+      {{/if}}
       <td>{{this.duration}}</td>
       <td>{{this.status}}</td>
       {{#if this.isAttendance}}
-      <td>attendance</td>
+      <td>出勤</td>
       {{else}}
-      <td>absence</td>
+      <td>缺勤</td>
       {{/if}}
     </tr>
     {{/each}}
   </tbody>
 </table>
+
+
+<div class="d-flex align-items-end flex-column bd-highlight mb-3">
+  <div class="p-2 bd-highlight">
+    <h5>出勤次數：{{countAttendance}}</h5>
+    <h5>缺勤次數：{{countAbsence}}</h5>
+  </div>
+</div>

@@ -1,23 +1,52 @@
 const { Record } = require('../models')
 const { formatDate, currentTaipeiTime } = require('../helpers/time-helper')
-const nowTime = currentTaipeiTime()
-const nowDate = formatDate(nowTime)
 
 const recordController = {
   getRecords: (req, res, next) => {
-    return Record.findAll({
-      where: { userId: req.user.id },
-      order: [
-        ['clockin', 'DESC']
-      ],
-      raw: true
-    })
-      .then(records => {
-        res.render('records', { records })
+    // return Record.findAll({
+    //   where: { userId: req.user.id },
+    //   order: [
+    //     ['clockin', 'DESC']
+    //   ],
+    //   raw: true
+    // })
+    return Promise.all([
+      Record.findAll({
+        where: { userId: req.user.id },
+        order: [
+          ['clockin', 'DESC']
+        ],
+        raw: true
+      }),
+      Record.findOne({
+        where: { userId: req.user.id },
+        order: [
+          ['clockin', 'DESC']
+        ],
+        raw: true
+      }),
+      Record.count({
+        where: {
+          userId: req.user.id,
+          isAttendance: true
+        }
+      }),
+      Record.count({
+        where: {
+          userId: req.user.id,
+          isAttendance: false
+        }
+      })
+    ])
+      .then(([records, record, countAttendance, countAbsence]) => {
+        res.render('records', { records, record, countAttendance, countAbsence })
       })
       .catch(err => next(err))
   },
   clockin: (req, res, next) => {
+    const nowTime = currentTaipeiTime()
+    const nowDate = formatDate(nowTime)
+
     Record.findOne({
       where: {
         userId: req.params.id,
@@ -43,6 +72,8 @@ const recordController = {
       .catch(err => next(err))
   },
   clockout: (req, res, next) => {
+    const nowTime = currentTaipeiTime()
+    const nowDate = formatDate(nowTime)
     let duration = ''
     let isAttendance = ''
 
@@ -53,7 +84,7 @@ const recordController = {
       }
     })
       .then(record => {
-        if (!record) throw new Error("今天還沒打過上班卡了!")
+        if (!record) throw new Error("今天還沒打過上班卡！")
         duration = Math.floor((nowTime - record.toJSON().clockin) / 1000 / 60 / 60)
         if (duration >= 8) { isAttendance = true } else { isAttendance = false }
 

@@ -9,6 +9,9 @@ module.exports = {
   formatDateTime: function (date) {
     return moment(date).format('YYYY-MM-DD HH:mm:ss')
   },
+  formatTimeOnly: function (date) {
+    return moment(date).format('HH:mm:ss')
+  },
   ifCond: function (a, b, options) {
     return a === b ? options.fn(this) : options.inverse(this)
   }
