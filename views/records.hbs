@@ -42,13 +42,8 @@
     {{#each records}}
     <tr>
       <td>{{this.date}}</td>
-
-      {{#ifCond process.env.NODE_ENV 'production'}}
-      <td>{{convertDateToTaipei this.clockin}}</td>
-      {{else}}
       <td>{{formatDateTime this.clockin}}</td>
-      {{/ifCond}}
-
+      
       {{#if this.clockout}}
       <td>{{formatDateTime this.clockout}}</td>
       {{else}}
