@@ -1,5 +1,5 @@
-# 我的餐廳清單
-![](https://hackmd.io/_uploads/HytREXxYn.png)
+# 公司出勤打卡系統
+![](https://imgur.com/OF2KrcZ.png)
 
 ## 功能介紹
 * 使用者可以登入
@@ -33,12 +33,12 @@ ctrl + c
 
 ## 功能使用
 * 點擊上下班打卡按鈕，即可進行打卡功能，並且在下方列表出現打卡記錄
-![](https://hackmd.io/_uploads/ByFbuBxtn.png)
+![](https://imgur.com/ZSmLcrc.png)
 
 * 後台管理員點擊Admin按鈕可以導入後台
 * 點擊Profile按鈕可以查看使用者個人資料
 * 點擊Logout可以登出
-![](https://hackmd.io/_uploads/B14SKSxF3.png)
+![](https://imgur.com/xBl4QGE.png)
 
 
 ## 開發工具
