@@ -32,13 +32,12 @@ Example app listening on port 3000!
 ctrl + c
 
 ## 功能使用
-* 點擊上下班打卡按鈕，即可進行打卡功能，並且在下方列表出現打卡記錄
-![](https://imgur.com/ZSmLcrc.png)
-
-* 後台管理員點擊Admin按鈕可以導入後台
-* 點擊Profile按鈕可以查看使用者個人資料
-* 點擊Logout可以登出
-![](https://imgur.com/xBl4QGE.png)
+![](https://imgur.com/QHzc3ue.png)
+* 點擊中間上下班打卡按鈕，即可進行打卡功能，並且在下方列表出現打卡記錄
+* 後台管理員點擊右上方Admin按鈕可以導入後台
+* 點擊右上方Profile按鈕可以查看使用者個人資料
+* 點擊右上方Logout可以登出
+* 點擊左上方公司出勤打卡系統可以導回首頁
 
 
 ## 開發工具
