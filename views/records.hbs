@@ -1,4 +1,6 @@
-<div class="d-flex p-2 bd-highlight justify-content-around mb-3">
+<div class="d-flex p-2 bd-highlight justify-content-center mb-3 display-1" id="clock"></div>
+
+<div class="d-flex p-2 bd-highlight justify-content-around mb-5">
   </button>
   <form action="/records/clockin/{{user.id}}" method="POST" style="display: inline;">
     <button type="submit" class="btn btn-outline-success btn-lg">上班打卡</button>
@@ -43,7 +45,7 @@
     <tr>
       <td>{{this.date}}</td>
       <td>{{formatDateTime this.clockin}}</td>
-      
+
       {{#if this.clockout}}
       <td>{{formatDateTime this.clockout}}</td>
       {{else}}
