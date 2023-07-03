@@ -3,13 +3,6 @@ const { formatDate, currentTaipeiTime } = require('../helpers/time-helper')
 
 const recordController = {
   getRecords: (req, res, next) => {
-    // return Record.findAll({
-    //   where: { userId: req.user.id },
-    //   order: [
-    //     ['clockin', 'DESC']
-    //   ],
-    //   raw: true
-    // })
     return Promise.all([
       Record.findAll({
         where: { userId: req.user.id },

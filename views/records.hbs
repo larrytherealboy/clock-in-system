@@ -42,14 +42,22 @@
     {{#each records}}
     <tr>
       <td>{{this.date}}</td>
+
+      {{#ifCond process.env.NODE_ENV 'production'}}
+      <td>{{formatDateTime convertDateToTaipei this.clockin}}</td>
+      {{else}}
       <td>{{formatDateTime this.clockin}}</td>
+      {{/if}}
+
       {{#if this.clockout}}
       <td>{{formatDateTime this.clockout}}</td>
       {{else}}
       <td>還沒下班</td>
       {{/if}}
+
       <td>{{this.duration}}</td>
       <td>{{this.status}}</td>
+
       {{#if this.isAttendance}}
       <td>出勤</td>
       {{else}}
