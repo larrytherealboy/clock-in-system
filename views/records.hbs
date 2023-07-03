@@ -44,7 +44,7 @@
       <td>{{this.date}}</td>
 
       {{#ifCond process.env.NODE_ENV 'production'}}
-      <td>{{formatDateTime convertDateToTaipei this.clockin}}</td>
+      <td>{{convertDateToTaipei this.clockin}}</td>
       {{else}}
       <td>{{formatDateTime this.clockin}}</td>
       {{/ifCond}}
