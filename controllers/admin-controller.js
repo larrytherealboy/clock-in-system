@@ -30,9 +30,9 @@ const adminController = {
       ],
       raw: true
     })
-    .then(records => {
-      res.render('admin/records', { records })
-    })
+      .then(records => {
+        res.render('admin/records', { records })
+      })
   },
   patchRecords: (req, res, next) => {
     return Record.findByPk(req.params.id)
@@ -45,6 +45,18 @@ const adminController = {
         res.redirect('/admin/records')
       })
       .catch(err => next(err))
+  },
+  deleteRecords: (req, res, next) => {
+    return Record.findByPk(req.params.id)
+      .then(record => {
+        if (!record) throw new Error("Record didn't exist!")
+        return record.destroy()
+      })
+      .then(() => {
+        req.flash('success_messages', '打卡記錄刪除成功')
+        res.redirect('/admin/records')
+      })
+      .catch(err => cb(err))
   }
 }
 

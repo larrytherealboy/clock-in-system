@@ -14,6 +14,7 @@
       <th scope="col">打卡狀態</th>
       <th scope="col">出缺勤紀錄</th>
       <th scope="col">#</th>
+      <th scope="col"></th>
     </tr>
   </thead>
   <tbody>
@@ -43,6 +44,12 @@
           <button type="submit" class="btn btn-link link-primary">set as attendance</button>
         </form>
         {{/if}}
+      </td>
+      <td>
+        <form action="/admin/records/{{this.id}}?_method=DELETE" method="POST" style="display: inline;">
+          <button type="submit" class="btn btn-link link-danger"
+            onclick="return confirm(`確定要刪除id＝ {{ this.id }} 的打卡記錄嗎？`)">Delete</button>
+        </form>
       </td>
     </tr>
     {{/each}}
