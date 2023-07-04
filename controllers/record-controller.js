@@ -37,7 +37,7 @@ const recordController = {
       .catch(err => next(err))
   },
   clockin: (req, res, next) => {
-    const nowTime = currentTaipeiTime()
+    const nowTime = new Date()
     const nowDate = formatDate(nowTime)
 
     Record.findOne({
@@ -65,7 +65,7 @@ const recordController = {
       .catch(err => next(err))
   },
   clockout: (req, res, next) => {
-    const nowTime = currentTaipeiTime()
+    const nowTime = new Date()
     const nowDate = formatDate(nowTime)
     let duration = ''
     let isAttendance = ''

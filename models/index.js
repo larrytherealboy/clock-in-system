@@ -13,8 +13,10 @@ if (config.use_env_variable) {
   config.timezone = 'Asia/Taipei'
   sequelize = new Sequelize(process.env[config.use_env_variable], config);
 } else {
-  sequelize = new Sequelize(config.database, config.username, config.password, { ...config, timezone: 'Asia/Taipei' });
+  sequelize = new Sequelize(config.database, config.username, config.password, config);
 }
+
+sequelize.options.timezone = '+08:00';  // 加入這行設定 Sequelize 的時區
 
 fs
   .readdirSync(__dirname)
