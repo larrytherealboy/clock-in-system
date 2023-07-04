@@ -1,5 +1,5 @@
 const { Record } = require('../models')
-const { formatDate, currentTaipeiTime } = require('../helpers/time-helper')
+const { formatDate } = require('../helpers/time-helper')
 
 const recordController = {
   getRecords: (req, res, next) => {
