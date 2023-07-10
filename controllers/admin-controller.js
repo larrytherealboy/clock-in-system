@@ -14,7 +14,7 @@ const adminController = {
     return User.findByPk(req.params.id)
       .then(user => {
         if (!user) throw new Error("User didn't exist!")
-        if (user.dataValues.account === 'root@example.com') throw new Error('禁止變更 root 權限')
+        if (user.dataValues.account === 'root') throw new Error('禁止變更 root 權限')
         return user.update({ isAdmin: !(user.dataValues.isAdmin) })
       })
       .then(() => {
