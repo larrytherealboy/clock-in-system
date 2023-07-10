@@ -37,12 +37,12 @@
         {{#if this.isAttendance}}
         </button>
         <form action="/admin/records/{{this.id}}?_method=PATCH" method="POST" style="display: inline;">
-          <button type="submit" class="btn btn-link link-primary">set as absence</button>
+          <button type="submit" class="btn btn-link link-primary" disabled>已出勤</button>
         </form>
         {{else}}
         </button>
         <form action="/admin/records/{{this.id}}?_method=PATCH" method="POST" style="display: inline;">
-          <button type="submit" class="btn btn-link link-primary">set as attendance</button>
+          <button type="submit" class="btn btn-link link-primary">清除缺勤狀態</button>
         </form>
         {{/if}}
       </td>
