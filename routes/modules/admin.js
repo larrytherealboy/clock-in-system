@@ -6,6 +6,7 @@ router.patch('/users/:id', adminController.patchUser)
 router.get('/users', adminController.getUsers)
 
 router.patch('/records/:id', adminController.patchRecords)
+// router.patch('/records/clear/:id', adminController.clearRecords)
 router.delete('/records/:id', adminController.deleteRecords)
 router.get('/records', adminController.getRecords)
 

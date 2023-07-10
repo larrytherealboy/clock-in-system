@@ -14,6 +14,7 @@
       <th scope="col">打卡狀態</th>
       <th scope="col">出缺勤紀錄</th>
       <th scope="col">編輯出缺勤狀態</th>
+      <th scope="col">刪除打卡紀錄</th>
       <th scope="col"></th>
     </tr>
   </thead>
@@ -45,6 +46,11 @@
         </form>
         {{/if}}
       </td>
+      {{!-- <td>
+        <form action="/admin/records/{{this.id}}?_method=PATCH" method="POST" style="display: inline;">
+          <button type="submit" class="btn btn-link link-primary">clear</button>
+        </form>
+      </td> --}}
       <td>
         <form action="/admin/records/{{this.id}}?_method=DELETE" method="POST" style="display: inline;">
           <button type="submit" class="btn btn-link link-danger"

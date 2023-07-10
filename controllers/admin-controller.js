@@ -46,6 +46,18 @@ const adminController = {
       })
       .catch(err => next(err))
   },
+  // clearRecords: (req, res, next) => {
+  //   return Record.findByPk(req.params.id)
+  //     .then(record => {
+  //       if (!record) throw new Error("Record didn't exist!")
+  //       return record.update({ isAttendance: !(record.dataValues.isAttendance) })
+  //     })
+  //     .then(() => {
+  //       req.flash('success_messages', '出缺勤狀態變更成功')
+  //       res.redirect('/admin/records')
+  //     })
+  //     .catch(err => next(err))
+  // },
   deleteRecords: (req, res, next) => {
     return Record.findByPk(req.params.id)
       .then(record => {
